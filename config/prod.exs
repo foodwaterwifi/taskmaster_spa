@@ -84,9 +84,9 @@ config :taskmaster3, Taskmaster3Web.Endpoint,
 
 # Configure your database
 config :taskmaster3, Taskmaster3.Repo,
-  username: "taskmaster",
-  password: "12345",#get_secret.("prod_db_pass"),
-  database: "taskmaster3_prod",
+  username: "taskmasterspa",
+  password: get_secret.("prod_db_pass"),
+  database: "taskmasterspa_prod",
   pool_size: 15
 
 # Finally import the config/prod.secret.exs which should be versioned

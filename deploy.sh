@@ -20,4 +20,4 @@ mix release --env=prod # generate the release
 
 echo "Starting app..."
 
-_build/prod/rel/taskmaster/bin/taskmaster foreground # start app in the foreground
+_build/prod/rel/taskmaster3/bin/taskmaster3 foreground # start app in the foreground
