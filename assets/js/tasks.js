@@ -18,7 +18,7 @@ function TaskListF(props) {
       <th></th>
     </tr>
   </thead>;
-  console.log("Hiding rows: ", props.hideRows);
+
   if (props.hideRows == true) {
     header = <thead>
       <tr>
@@ -128,8 +128,6 @@ function TaskViewF(props) {
 }
 
 function TaskCreationF(props) {
-  console.log("Task creation");
-  console.log(props);
   if (props.session == null) {
     return null;
   }

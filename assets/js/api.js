@@ -38,7 +38,6 @@ class ServerAPI {
     this.fetch_path(
       "/api/v1/users",
       (resp) => {
-        console.log("Fetched Users");
         store.dispatch({
           type: 'USER_LIST',
           data: resp.data,
@@ -51,7 +50,6 @@ class ServerAPI {
     this.fetch_path(
       "/api/v1/tasks",
       (resp) => {
-        console.log("Fetched Tasks");
         store.dispatch({
           type: 'TASK_LIST',
           data: resp.data,
@@ -64,7 +62,6 @@ class ServerAPI {
     this.fetch_path(
       "/api/v1/tasks",
       (resp) => {
-        console.log("Fetched Tasks");
         store.dispatch({
           type: 'TASK_LIST_FOR_USER',
           data: resp.data,
@@ -79,7 +76,6 @@ class ServerAPI {
       "/api/v1/sessions",
       {username, password},
       (resp) => {
-        console.log("Created Session", _.assign(resp.data, { username }));
         store.dispatch({
           type: 'NEW_SESSION',
           data: _.assign(resp.data, { username }),
@@ -95,12 +91,10 @@ class ServerAPI {
   }
 
   update_task(id, complete, time, user_id) {
-    console.log("Update task called with id ", id);
     this.send_put(
       "/api/v1/tasks/" + id.toString(),
       {task: {complete, time, user_id}},
       (resp) => {
-        console.log("Updated Task", resp);
         this.fetch_all_tasks(); // slow if this were a real site with lots of tasks
       }
     )
@@ -111,7 +105,6 @@ class ServerAPI {
       "/api/v1/users",
       {user: {username, password, password_confirmation, admin: false}},
       (resp) => {
-        console.log("Created user");
         this.fetch_all_users();
         this.redirect("/users");
       }
@@ -123,7 +116,6 @@ class ServerAPI {
       "/api/v1/tasks",
       {task: {title, description, user_id, time: 0, complete: false}},
       (resp) => {
-        console.log("Created user");
         this.fetch_all_tasks();
         this.redirect("/tasks")
       }

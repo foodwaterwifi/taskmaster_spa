@@ -8,7 +8,6 @@ import { UserTaskList } from "./tasks";
 
 function UserListF(props) {
     let rows = _.map(props.users, (user) => <User key={user.id} user={user} />);
-    console.log("got rows, now returning user list");
     return <table className="table table-striped">
           <thead>
             <tr>

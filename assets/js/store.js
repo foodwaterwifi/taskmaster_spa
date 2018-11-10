@@ -55,12 +55,9 @@ function redirect(state = null, action) {
 }
 
 function root_reducer(state0, action) {
-  console.log("reducer before", state0, action);
 
   let reducer = combineReducers({tasks, users, session, redirect});
   let state1 = reducer(state0, action);
-
-  console.log("reducer after", state1);
 
   return deepFreeze(state1);
 }
