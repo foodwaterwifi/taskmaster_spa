@@ -8,11 +8,12 @@ defmodule Taskmaster3Web.TaskController do
 
   def index(conn, _params) do
     tasks = Tasks.list_tasks()
-    IO.inspect(tasks)
     render(conn, "index.json", tasks: tasks)
   end
 
   def create(conn, %{"task" => task_params}) do
+    IO.puts "Creating a task"
+    IO.inspect task_params
     with {:ok, %Task{} = task} <- Tasks.create_task(task_params) do
       conn
       |> put_status(:created)

@@ -18,7 +18,6 @@ defmodule Taskmaster3.Tasks do
 
   """
   def list_tasks do
-    IO.puts "Getting all tasks and preloading"
     Repo.all(Task) |> Repo.preload(:user)
   end
 

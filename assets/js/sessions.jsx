@@ -6,7 +6,7 @@ import $ from "jquery";
 
 import api from "./api"
 
-function NavbarLogin(params) {
+function NavbarLoginF(params) {
   let loggedIn = params.session != null;
   if (loggedIn) {
     return <span>
@@ -38,4 +38,16 @@ function NavbarLogin(params) {
   }
 }
 
-export default connect((state) => {return {session: state.session};})(NavbarLogin);
+function NavbarProfileLinkF(props) {
+  if (props.session != null) {
+    return <li className="nav-item">
+      <Link className="nav-link" to={"/users/user/" + props.session.user_id.toString()}>My Profile</Link>
+    </li>
+  }
+  else {
+    return null;
+  }
+}
+
+export let NavbarLogin = connect((state) => {return {session: state.session};})(NavbarLoginF);
+export let NavbarProfileLink = connect((state) => {return {session: state.session};})(NavbarProfileLinkF);

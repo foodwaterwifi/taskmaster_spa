@@ -106,8 +106,36 @@ class ServerAPI {
     )
   }
 
+  create_user(username, password, password_confirmation) {
+    this.send_post(
+      "/api/v1/users",
+      {user: {username, password, password_confirmation, admin: false}},
+      (resp) => {
+        console.log("Created user");
+        this.fetch_all_users();
+        this.redirect("/users");
+      }
+    )
+  }
 
+  create_task(title, description, user_id) {
+    this.send_post(
+      "/api/v1/tasks",
+      {task: {title, description, user_id, time: 0, complete: false}},
+      (resp) => {
+        console.log("Created user");
+        this.fetch_all_tasks();
+        this.redirect("/tasks")
+      }
+    )
+  }
 
+  redirect(link) {
+    store.dispatch({
+      type: 'REDIRECT',
+      data: link
+    })
+  }
 }
 
 export default new ServerAPI();

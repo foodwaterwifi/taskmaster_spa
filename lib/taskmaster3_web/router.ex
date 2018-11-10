@@ -18,12 +18,11 @@ defmodule Taskmaster3Web.Router do
 
     get "/", PageController, :index
 
-    get "/", PageController, :index
     get "/users", PageController, :index
     get "/users/register", PageController, :index
     get "/users/user/:id", PageController, :index
     get "/tasks", PageController, :index
-    get "/tasks/new", PageController, :index
+    get "/tasks/create", PageController, :index
     get "/tasks/task/:id", PageController, :index
   end
 

@@ -8,6 +8,7 @@ State
   users: [], // List of User
   tasks: [], // List of Task
   session: null, // { token, user_id }
+  redirect: null, // String or null
 }
 */
 
@@ -44,22 +45,19 @@ function session(state = null, action) {
   }
 }
 
-/*
-function add_item_forms(state = new Map(), action) {
+function redirect(state = null, action) {
   switch (action.type) {
-  case 'UPDATE_ADD_CART_FORM':
-    let state1 = new Map(state);
-    state1.set(action.product_id, action.count);
-    return state1;
+  case 'REDIRECT':
+    return action.data;
   default:
     return state;
   }
-}*/
+}
 
 function root_reducer(state0, action) {
   console.log("reducer before", state0, action);
 
-  let reducer = combineReducers({tasks, users, session});
+  let reducer = combineReducers({tasks, users, session, redirect});
   let state1 = reducer(state0, action);
 
   console.log("reducer after", state1);
